@@ -1,3 +1,4 @@
+"use strict";
 const items = document.querySelectorAll('.slider-item');
 const itemCount = items.length;
 const nextItem = document.querySelector('.next');
@@ -50,3 +51,27 @@ nextItem.addEventListener('click', showNextItem);
 previousItem.addEventListener('click', showPreviousItem);
 document.addEventListener('keydown', keyPress);
 navItem.addEventListener('click', toggleNavigation);
+
+
+
+
+// Darkmode
+var toggleButton = document.querySelector(".btn__dark");
+toggleButton.addEventListener("click", toggleCallback);
+var activeTheme = localStorage.getItem("theme");
+if(activeTheme == "dark"){
+    document.body.classList.add("dark");
+    toggleButton.checked = true;
+}
+function toggleCallback(){
+    if(document.body.classList.toggle("dark")){
+        localStorage.setItem("theme", "dark");
+    }else{
+        localStorage.setItem("theme", "light");
+    }
+}
+
+// date
+var dateEl = new Date();
+document.querySelector("#date")
+.innerHTML = dateEl.getFullYear();
